@@ -1,0 +1,42 @@
+<configuration>
+
+    <!-- Console Appender -->
+    <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- File Appender -->
+    <appender name="myFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>
+            journalApp.log
+        </file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern> journalApp-%d{yy-MM-dd_ HH-mm}.%i.log</fileNamePattern>
+            <maxFileSize>5MB</maxFileSize>
+            <maxHistory>5</maxHistory>
+
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+
+        <!-- Relative path to ensure the file is created -->
+    </appender>
+
+    <!-- Root Logger Configuration -->
+    <root level="INFO">
+        <appender-ref ref="myConsoleAppender"/>
+        <appender-ref ref="myFileAppender"/>
+    </root>
+
+    <!-- Optional: Custom Logger Configuration -->
+    <logger name="net.engineeringDigest.journalApp" level="DEBUG">
+        <appender-ref ref="myConsoleAppender"/>
+        <appender-ref ref="myFileAppender"/>
+    </logger>
+
+</configuration>

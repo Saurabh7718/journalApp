@@ -1,0 +1,29 @@
+#spring.application.name=journal App
+#//spring.data.mongodb.host=localhost
+#//spring.data.mongodb.port=27017
+#=
+#spring.data.mongodb.uri=mongodb+srv://saurabhchidrawar638:UFUy5x8mr7SuG75J@cluster0.sf8cp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+#spring.data.mongodb.database=journaldb
+#spring.data.mongodb.auto-index-creation=true
+
+spring:
+  data:
+    mongodb:
+      uri:mongodb+srv://saurabhchidrawar638:UFUy5x8mr7SuG75J@cluster0.sf8cp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database:journaldb
+      auto-index-creation:true
+
+
+server:
+  port: 8080
+  servlet:
+     context-path: /journal
+    # Configure the server port
+
+
+    # Configure the servlet context path for the application
+
+logging:
+  level:
+    org.springframework: ERROR
+    net.engineeringDigest.journalApp: ERROR
