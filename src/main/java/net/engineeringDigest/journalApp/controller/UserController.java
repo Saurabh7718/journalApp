@@ -1,6 +1,7 @@
 package net.engineeringDigest.journalApp.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import net.engineeringDigest.journalApp.apiResponse.WeatherResponse;
 import net.engineeringDigest.journalApp.entity.User;
 import net.engineeringDigest.journalApp.repository.UserRepository;
@@ -72,14 +73,14 @@ public class UserController {
     }
 
     @GetMapping("greet")
-    public ResponseEntity<?> greeting() {
+    public ResponseEntity<?> greeting() throws JsonProcessingException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String greeting = "";
 
         WeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
         if (weatherResponse != null && weatherResponse.getCurrent() != null) {
             greeting = ",weather feels like " + weatherResponse.getCurrent().getFeelslike();
-            return new ResponseEntity<>("Hi +" + authentication.getName() + greeting, HttpStatus.OK);
+            return new ResponseEntity<>("Hi + " + authentication.getName() + greeting, HttpStatus.OK);
 
         }
 

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 
 import java.util.List;
-import java.util.Queue;
 
 
 @Component
@@ -21,7 +20,9 @@ public class UserRespositoryImpl {
     private MongoTemplate mongoTemplate;
 
 
-    public List<User> getUserForSA() {
+
+
+    public List<net.engineeringDigest.journalApp.entity.User> getUserForSA() {
         Query query = new Query();
 //        query.addCriteria(Criteria.where("email").exists(true));
 //        query.addCriteria(Criteria.where("email").ne(null).ne(""));
@@ -37,8 +38,8 @@ public class UserRespositoryImpl {
 //                Criteria.where("sentiementAnalysis").is(true)));
 //
 
-        List<User> users = mongoTemplate.find(query, User.class);
-        return users;
+        return  mongoTemplate.find(query, net.engineeringDigest.journalApp.entity.User.class);
+
 
     }
 

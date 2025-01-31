@@ -1,35 +1,32 @@
-    package net.engineeringDigest.journalApp.apiResponse;
+package net.engineeringDigest.journalApp.apiResponse;
 
 
-    import com.fasterxml.jackson.annotation.JsonProperty;
-    import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
-    import java.util.List;
+import java.util.List;
+
+@Data
+public class WeatherResponse {
+
+    private Current current;
 
     @Data
-    public class WeatherResponse {
+    public class Current {
 
-            private Current current;
+        private int temperature;
 
-            @Data
-            public class Current {
+        @JsonProperty("weather_descriptions")
+        private List<String> weatherDescriptions;
 
-
-                private int temperature;
-
-
-                @JsonProperty("weather_descriptions")
-                private List<String> weatherDescriptions;
-
-
-                private int feelslike;
-
-            }
-
+        private int feelslike;
 
     }
 
-    // import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1
-    // import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
+
+}
+
+// import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1
+// import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
     /* ObjectMapper om = new ObjectMapper();
     Root root = om.readValue(myJsonString, Root.class); */
