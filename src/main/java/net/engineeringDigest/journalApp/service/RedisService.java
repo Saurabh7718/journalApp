@@ -19,18 +19,24 @@ public class RedisService {
 
 
     public <T> T get(String key, Class<T> weatherResponseClass) throws JsonProcessingException {
-        Object o = redisTemplate.opsForValue().get(key);
+       try{
+           Object o = redisTemplate.opsForValue().get(key);
            if (o == null) {
-            return null;  // Or handle this case if the value is not found in Redis
-        }
-        // here we are getting reponse in object but we want to share reponse in reposetype for weather response
-        //means we want to share repsonse in the form of that class means POJO for weather api
-        //we can convert by using ObjectMapper
+               return null;  // Or handle this case if the value is not found in Redis
+           }
+           // here we are getting reponse in object but we want to share reponse in reposetype for weather response
+           //means we want to share repsonse in the form of that class means POJO for weather api
+           //we can convert by using ObjectMapper
 
-        ObjectMapper mapper = new ObjectMapper();
+           ObjectMapper mapper = new ObjectMapper();
 
-        //mapper first take string and second object take class in which want to convert
-        return mapper.readValue(o.toString(), weatherResponseClass);
+           //mapper first take string and second object take class in which want to convert
+           return mapper.readValue(o.toString(), weatherResponseClass);
+       }
+       catch(Exception e){
+           log.error("Exception "+e);
+           return null;
+       }
     }
 
 
@@ -43,7 +49,7 @@ public class RedisService {
 
         } catch (Exception e) {
             log.error(String.valueOf(e));
-        }
+         }
     }
 
 

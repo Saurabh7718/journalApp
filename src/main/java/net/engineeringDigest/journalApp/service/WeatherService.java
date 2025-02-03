@@ -34,7 +34,7 @@ public class WeatherService {
     private RedisService redisService;
 
     public WeatherResponse getWeather(String city) throws JsonProcessingException {
-        WeatherResponse weatherResponse = redisService.get("Weather_of_" + city, WeatherResponse.class);
+        WeatherResponse weatherResponse = redisService.get("weather", WeatherResponse.class);
         if (weatherResponse != null) {
             return weatherResponse;
         } else {
@@ -42,7 +42,7 @@ public class WeatherService {
             ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET, null, WeatherResponse.class);
             WeatherResponse body = response.getBody();
             if (body != null) {
-                redisService.set("Weather_of_" + city, body, 300l);
+                redisService.set("weather" , body, 300l);
             }
 
             return body;
