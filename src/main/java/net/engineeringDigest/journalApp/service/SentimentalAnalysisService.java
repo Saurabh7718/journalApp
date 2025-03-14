@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 public class SentimentalAnalysisService {
 
 
-    public int getSentiment(String text){
+    public String getSentiment(String text){
+        return text;
 
     }
 }

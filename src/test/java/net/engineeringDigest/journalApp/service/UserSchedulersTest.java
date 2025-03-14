@@ -1,23 +1,18 @@
 package net.engineeringDigest.journalApp.service;
 
+import net.engineeringDigest.journalApp.scheduler.UserScheduler;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
 @SpringBootTest
-public class EmailServiceTests {
+public class UserSchedulersTest {
+
     @Autowired
-    private EmailService emailService;
+    private UserScheduler userScheduler;
 
     @Test
-    public void sendMail(){
-
-
-        emailService.sendEmail("financial.worm.nsxd@letterguard.net","testing java ","email test");
+    public void testFetchusersAndSendEmail(){
+        userScheduler.fetchUsersAndSendSAMail();
     }
 }
-
-
-
-
