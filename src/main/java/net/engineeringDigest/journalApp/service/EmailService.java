@@ -28,6 +28,7 @@ public class EmailService {
 
         }
         catch(Exception e){
+            System.out.println("----------ERROR for send Email-----------");
             log.error("Exception while send Email",e);
         }
 

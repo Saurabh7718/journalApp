@@ -47,6 +47,7 @@ public class RedisService {
             redisTemplate.opsForValue().set(key, json, ttl, TimeUnit.SECONDS);
 
 
+
         } catch (Exception e) {
             log.error(String.valueOf(e));
          }
